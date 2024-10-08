@@ -21,14 +21,31 @@ html {
  font-weight: bold;
  max-width: 80%;
  animation: float 3s ease-in-out infinite;
+ margin-bottom: 20px;
+ text-shadow: 2px 2px 5px rgba(255, 105, 180, 0.7);
+ background: linear-gradient(45deg, #ff0080, #ff8c00);
+ -webkit-background-clip: text;
+ -webkit-text-fill-color: transparent;
 }
 
 .counter {
- position: absolute;
- bottom: 20px;
+ position: relative;
  font-size: 1.5em;
  text-align: center;
  color: rgba(255, 255, 255, 0.8);
+ margin-top: 20px;
+ text-shadow: 1px 1px 3px rgba(255, 105, 180, 0.5);
+ transition: color 0.3s;
+}
+
+.counter:hover {
+ color: #ff69b4;
+}
+
+.message {
+ font-size: 0.8em;
+ color: rgba(255, 255, 255, 0.6);
+ text-shadow: 1px 1px 2px rgba(255, 105, 180, 0.5);
 }
 
 @keyframes float {
@@ -40,5 +57,17 @@ html {
  }
  100% {
   transform: translateY(0);
+ }
+}
+
+@keyframes gradient {
+ 0% {
+  background-position: 0% 50%;
+ }
+ 50% {
+  background-position: 100% 50%;
+ }
+ 100% {
+  background-position: 0% 50%;
  }
 }
