@@ -1,0 +1,44 @@
+body,
+html {
+ margin: 0;
+ padding: 0;
+ height: 100%;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ font-family: "Edu AU VIC WA NT Dots", cursive;
+ color: white;
+ background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+  url("tlo.jpg") no-repeat center center fixed;
+ background-size: cover;
+ backdrop-filter: blur(8px);
+}
+
+.quote {
+ text-align: center;
+ font-size: 2.5em;
+ font-weight: bold;
+ max-width: 80%;
+ animation: float 3s ease-in-out infinite;
+}
+
+.counter {
+ position: absolute;
+ bottom: 20px;
+ font-size: 1.5em;
+ text-align: center;
+ color: rgba(255, 255, 255, 0.8);
+}
+
+@keyframes float {
+ 0% {
+  transform: translateY(0);
+ }
+ 50% {
+  transform: translateY(-20px);
+ }
+ 100% {
+  transform: translateY(0);
+ }
+}
