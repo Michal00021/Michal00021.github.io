@@ -47,8 +47,8 @@
    }
 
    .message {
-    font-size: 0.8em; /* Mniejsza czcionka dla dodatkowego komunikatu */
-    color: rgba(255, 255, 255, 0.6); /* Trochę jaśniejszy kolor */
+    font-size: 0.8em;
+    color: rgba(255, 255, 255, 0.6);
    }
 
    @keyframes float {
@@ -68,7 +68,6 @@
   <div class="quote" id="quote"></div>
   <div class="counter" id="counter"></div>
   <div class="message" id="message"></div>
-  <!-- Nowy element do wyświetlania komunikatów -->
 
   <script>
    const quotes = [
@@ -90,7 +89,7 @@
     const baseDate = new Date("2024-01-01");
     const dayDifference = Math.floor(
      (startOfDay - baseDate) / (1000 * 60 * 60 * 24)
-    ); // Liczba dni od bazy
+    );
     const randomQuoteIndex = dayDifference % quotes.length;
     document.getElementById("quote").textContent = quotes[randomQuoteIndex];
    }
@@ -101,25 +100,20 @@
     const timeDiff = today - startDate;
     const daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
 
-    // Obliczanie miesięcy
     const monthsDiff = Math.floor(daysDiff / 30);
 
-    // Wyświetlanie dni
     document.getElementById(
      "counter"
     ).textContent = `Jesteśmy już razem od ${daysDiff} dni!`;
 
-    // Tworzenie komunikatu
     let message = "To cudowne!";
 
-    // Dodawanie wiadomości dla pełnych miesięcy
     if (monthsDiff > 0) {
      message += ` To już ${monthsDiff} ${
       monthsDiff === 1 ? "miesiąc" : "miesiące"
      } razem! 🎉`;
     }
 
-    // Ustawianie komunikatu w odpowiednim elemencie
     document.getElementById("message").textContent = message;
    }
 
