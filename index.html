@@ -3,14 +3,14 @@
  <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dla mojej pięknej dziewczyny</title>
+  <title>Codzienne Cytaty</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-   href="https://fonts.googleapis.com/css2?family=Qwitcher+Grypen:wght@400;700&display=swap"
+   href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Guides:wght@400..700&display=swap"
    rel="stylesheet"
   />
-  <!-- <link rel="stylesheet" href="styles.css" /> -->
+
   <style>
    body,
    html {
@@ -21,12 +21,13 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-family: "Edu AU VIC WA NT Dots", cursive;
+    font-family: "Arial", sans-serif;
     color: white;
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
      url("tlo.jpg") no-repeat center center fixed;
     background-size: cover;
     backdrop-filter: blur(8px);
+    font-family: "Edu AU VIC WA NT Guides", cursive;
    }
 
    .quote {
@@ -34,63 +35,209 @@
     font-size: 2.5em;
     font-weight: bold;
     max-width: 80%;
-    animation: float 3s ease-in-out infinite;
-    margin-bottom: 20px;
-    text-shadow: 2px 2px 5px rgba(255, 105, 180, 0.7);
-    background: linear-gradient(45deg, #ff0080, #ff8c00);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    opacity: 0;
+    transform: translateX(-100%);
+    animation: slideIn 1.5s ease forwards;
    }
 
    .counter {
-    position: relative;
+    position: absolute;
+    bottom: 20px;
     font-size: 1.5em;
     text-align: center;
     color: rgba(255, 255, 255, 0.8);
-    margin-top: 20px;
-    text-shadow: 1px 1px 3px rgba(255, 105, 180, 0.5);
-    transition: color 0.3s;
    }
 
-   .counter:hover {
-    color: #ff69b4;
-   }
-
-   .message {
-    font-size: 0.8em;
-    color: rgba(255, 255, 255, 0.6);
-    text-shadow: 1px 1px 2px rgba(255, 105, 180, 0.5);
-   }
-
-   @keyframes float {
+   @keyframes slideIn {
     0% {
-     transform: translateY(0);
-    }
-    50% {
-     transform: translateY(-20px);
+     opacity: 0;
+     transform: translateX(-100%);
     }
     100% {
-     transform: translateY(0);
+     opacity: 1;
+     transform: translateX(0);
     }
    }
 
-   @keyframes gradient {
+   @keyframes slideOut {
     0% {
-     background-position: 0% 50%;
-    }
-    50% {
-     background-position: 100% 50%;
+     opacity: 1;
+     transform: translateX(0);
     }
     100% {
-     background-position: 0% 50%;
+     opacity: 0;
+     transform: translateX(100%);
     }
+   }
+
+   .quote.fade-out {
+    animation: slideOut 1.5s ease forwards;
    }
   </style>
  </head>
  <body>
   <div class="quote" id="quote"></div>
   <div class="counter" id="counter"></div>
-  <div class="message" id="message"></div>
-  <script src="scripts/script.js"></script>
+
+  <script>
+   const quotes = [
+    "Kocham Cię.",
+    "Jesteś dla mnie najważniejsza.",
+    "Nie mogę bez Ciebie żyć.",
+    "Zawsze o Tobie myślę.",
+    "Każdy dzień z Tobą jest wyjątkowy.",
+    "Jesteś moim światłem w ciemności.",
+    "Uwielbiam każdy moment spędzony z Tobą.",
+   ];
+
+   let currentQuoteIndex = 0;
+   const quoteElement = document.getElementById("quote");
+
+   function loadQuote() {
+    quoteElement.classList.remove("fade-out");
+    quoteElement.textContent = quotes[currentQuoteIndex];
+    setTimeout(() => {
+     quoteElement.classList.add("fade-out");
+     setTimeout(() => {
+      currentQuoteIndex = (currentQuoteIndex + 1) % quotes.length;
+      loadQuote();
+     }, 1500); // Delay before next quote loads
+    }, 4000); // Time each quote stays visible
+   }
+
+   function countDays() {
+    const startDate = new Date("2024-08-27");
+    const today = new Date();
+    const timeDiff = today - startDate;
+    const daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+    document.getElementById(
+     "counter"
+    ).textContent = `Jesteśmy razem od ${daysDiff} dni!`;
+   }
+
+   loadQuote();
+   countDays();
+  </script>
+ </body>
+</html>
+<!DOCTYPE html>
+<html lang="pl">
+ <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Codzienne Cytaty</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+   href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Guides:wght@400..700&display=swap"
+   rel="stylesheet"
+  />
+
+  <style>
+   body,
+   html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: "Arial", sans-serif;
+    color: white;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+     url("tlo.jpg") no-repeat center center fixed;
+    background-size: cover;
+    backdrop-filter: blur(8px);
+    font-family: "Edu AU VIC WA NT Guides", cursive;
+   }
+
+   .quote {
+    text-align: center;
+    font-size: 2.5em;
+    font-weight: bold;
+    max-width: 80%;
+    opacity: 0;
+    transform: translateX(-100%);
+    animation: slideIn 1.5s ease forwards;
+   }
+
+   .counter {
+    position: absolute;
+    bottom: 20px;
+    font-size: 1.5em;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.8);
+   }
+
+   @keyframes slideIn {
+    0% {
+     opacity: 0;
+     transform: translateX(-100%);
+    }
+    100% {
+     opacity: 1;
+     transform: translateX(0);
+    }
+   }
+
+   @keyframes slideOut {
+    0% {
+     opacity: 1;
+     transform: translateX(0);
+    }
+    100% {
+     opacity: 0;
+     transform: translateX(100%);
+    }
+   }
+
+   .quote.fade-out {
+    animation: slideOut 1.5s ease forwards;
+   }
+  </style>
+ </head>
+ <body>
+  <div class="quote" id="quote"></div>
+  <div class="counter" id="counter"></div>
+
+  <script>
+   const quotes = [
+    "Z Tobą każdy dzień ma więcej sensu.",
+    "Jesteś moją ulubioną osobą na świecie.",
+    "Zawsze potrafisz mnie rozśmieszyć.",
+    "Fajnie, że jesteś. Serio.",
+    "Kiedy jesteś obok, wszystko jest lepsze.",
+    "Jesteś najlepszą częścią mojego dnia.",
+   ];
+
+   let currentQuoteIndex = 0;
+   const quoteElement = document.getElementById("quote");
+
+   function loadQuote() {
+    quoteElement.classList.remove("fade-out");
+    quoteElement.textContent = quotes[currentQuoteIndex];
+    setTimeout(() => {
+     quoteElement.classList.add("fade-out");
+     setTimeout(() => {
+      currentQuoteIndex = (currentQuoteIndex + 1) % quotes.length;
+      loadQuote();
+     }, 1500); // Delay before next quote loads
+    }, 4000); // Time each quote stays visible
+   }
+
+   function countDays() {
+    const startDate = new Date("2024-08-27");
+    const today = new Date();
+    const timeDiff = today - startDate;
+    const daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+    document.getElementById(
+     "counter"
+    ).textContent = `Jesteśmy razem od ${daysDiff} dni!`;
+   }
+
+   loadQuote();
+   countDays();
+  </script>
  </body>
 </html>
