@@ -52,6 +52,31 @@
     text-shadow: 1px 1px 3px rgba(255, 105, 180, 0.5);
     transition: color 0.3s;
    }
+   .love-btn {
+    background-color: #ff69b4;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.2em;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(255, 105, 180, 0.5);
+    transition: all 0.3s ease;
+   }
+
+   .love-btn:hover {
+    background-color: #ff1493;
+    box-shadow: 0 6px 20px rgba(255, 105, 180, 0.7);
+    transform: scale(1.05);
+   }
+
+   #love-letter {
+    font-size: 1em;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 20px;
+    text-align: center;
+    text-shadow: 1px 1px 5px rgba(255, 105, 180, 0.5);
+   }
 
    .counter:hover {
     color: #ff69b4;
@@ -92,7 +117,14 @@
   <div class="quote" id="quote"></div>
   <div class="counter" id="counter"></div>
   <div class="message" id="message"></div>
-
+  <br />
+  <button id="love-btn" onclick="toggleLetter()" class="love-btn">
+   Klikniesz?
+  </button>
+  <p id="love-letter" style="display: none">
+   Kocham Cię najbardziej na świecie. Każda chwila z Tobą jest dla mnie
+   wyjątkowa❤️
+  </p>
   <script>
    const quotes = [
     "Z Tobą każdy dzień ma więcej sensu.",
@@ -142,6 +174,21 @@
 
    loadQuote();
    countDays();
+  </script>
+
+  <script>
+   function toggleLetter() {
+    const letter = document.getElementById("love-letter");
+    const button = document.getElementById("love-btn");
+
+    if (letter.style.display === "none") {
+     letter.style.display = "block";
+     button.textContent = "Za dużo tego karmelu. Zamkniesz?";
+    } else {
+     letter.style.display = "none";
+     button.textContent = "Klikniesz mnie? ";
+    }
+   }
   </script>
  </body>
 </html>
