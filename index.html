@@ -23,24 +23,44 @@
     align-items: center;
     font-family: "Edu AU VIC WA NT Dots", cursive;
     color: white;
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-     url("tlo.jpg") no-repeat center center fixed;
+    background-image: url("tlo.jpg");
+    background-repeat: no-repeat;
     background-size: cover;
-    backdrop-filter: blur(8px);
+    overflow: hidden;
+   }
+
+   .quote-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    position: relative;
    }
 
    .quote {
     text-align: center;
-    font-size: 2.5em;
+    font-size: 8vw;
     font-weight: bold;
-    max-width: 80%;
-    animation: float 3s ease-in-out infinite;
-    margin-bottom: 20px;
-    text-shadow: 2px 2px 5px rgba(255, 105, 180, 0.7);
-    background: linear-gradient(45deg, #ff0080, #ff8c00);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: gradient 5s ease infinite;
+    background-image: url("tlo_cytatu.jpg");
+    background-size: cover;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    text-shadow: 2px 2px 8px rgba(255, 105, 180, 0.7);
+    color: white;
+    animation: fadeIn 1s ease-in-out;
+    opacity: 0;
+    animation-fill-mode: forwards;
+   }
+
+   @keyframes fadeIn {
+    from {
+     opacity: 0;
+    }
+    to {
+     opacity: 1;
+    }
    }
 
    .counter {
@@ -49,19 +69,20 @@
     text-align: center;
     color: rgba(255, 255, 255, 0.8);
     margin-top: 20px;
-    text-shadow: 1px 1px 3px rgba(255, 105, 180, 0.5);
-    transition: color 0.3s;
+    text-shadow: 1px 1px 5px rgba(255, 105, 180, 0.5);
    }
+
    .love-btn {
     background-color: #ff69b4;
     color: white;
     padding: 10px 20px;
     border: none;
     border-radius: 25px;
-    font-size: 1.2em;
+    font-size: 1em;
     cursor: pointer;
     box-shadow: 0 4px 15px rgba(255, 105, 180, 0.5);
     transition: all 0.3s ease;
+    margin-top: 20px;
    }
 
    .love-btn:hover {
@@ -71,60 +92,44 @@
    }
 
    #love-letter {
-    font-size: 1em;
+    font-size: 0.9em;
     color: rgba(255, 255, 255, 0.8);
     margin-top: 20px;
     text-align: center;
     text-shadow: 1px 1px 5px rgba(255, 105, 180, 0.5);
-   }
-
-   .counter:hover {
-    color: #ff69b4;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
    }
 
    .message {
-    font-size: 0.8em;
+    font-size: 1em;
     color: rgba(255, 255, 255, 0.6);
-    text-shadow: 1px 1px 2px rgba(255, 105, 180, 0.5);
-   }
-
-   @keyframes float {
-    0% {
-     transform: translateY(0);
-    }
-    50% {
-     transform: translateY(-20px);
-    }
-    100% {
-     transform: translateY(0);
-    }
-   }
-
-   @keyframes gradient {
-    0% {
-     background-position: 0% 50%;
-    }
-    50% {
-     background-position: 100% 50%;
-    }
-    100% {
-     background-position: 0% 50%;
-    }
+    text-shadow: 1px 1px 3px rgba(255, 105, 180, 0.5);
    }
   </style>
  </head>
  <body>
-  <div class="quote" id="quote"></div>
+  <div class="quote-container">
+   <div class="quote" id="quote"></div>
+  </div>
   <div class="counter" id="counter"></div>
   <div class="message" id="message"></div>
-  <br />
   <button id="love-btn" onclick="toggleLetter()" class="love-btn">
    Klikniesz?
   </button>
-  <p id="love-letter" style="display: none">
+  <p id="love-letter">
    Kocham Cię najbardziej na świecie. Każda chwila z Tobą jest dla mnie
    wyjątkowa❤️
   </p>
+
   <script>
    const quotes = [
     "Z Tobą każdy dzień ma więcej sensu.",
@@ -148,6 +153,9 @@
     );
     const randomQuoteIndex = dayDifference % quotes.length;
     document.getElementById("quote").textContent = quotes[randomQuoteIndex];
+    setTimeout(() => {
+     document.getElementById("quote").style.opacity = 1;
+    }, 50);
    }
 
    function countDays() {
@@ -172,11 +180,6 @@
     document.getElementById("message").textContent = message;
    }
 
-   loadQuote();
-   countDays();
-  </script>
-
-  <script>
    function toggleLetter() {
     const letter = document.getElementById("love-letter");
     const button = document.getElementById("love-btn");
@@ -184,11 +187,18 @@
     if (letter.style.display === "none") {
      letter.style.display = "block";
      button.textContent = "Za dużo tego karmelu. Zamkniesz?";
+     document.body.style.overflow = "hidden";
     } else {
      letter.style.display = "none";
      button.textContent = "Klikniesz mnie? ";
+     document.body.style.overflow = "";
     }
    }
+
+   document.getElementById("love-letter").style.display = "none";
+
+   loadQuote();
+   countDays();
   </script>
  </body>
 </html>
