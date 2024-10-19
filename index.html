@@ -38,6 +38,16 @@
     position: relative;
    }
 
+   #datetime {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.2em;
+    color: white;
+    text-shadow: 1px 1px 5px rgba(255, 105, 180, 0.5);
+    z-index: 10;
+   }
+
    .quote {
     text-align: center;
     font-size: 8vw;
@@ -114,9 +124,38 @@
     color: rgba(255, 255, 255, 0.6);
     text-shadow: 1px 1px 3px rgba(255, 105, 180, 0.5);
    }
+
+   .heart {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-image: url("heart.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: -1;
+   }
+
+   @keyframes flyHeart {
+    0% {
+     transform: translate(0, 0);
+    }
+    25% {
+     transform: translate(100vw, 0);
+    }
+    50% {
+     transform: translate(100vw, 100vh);
+    }
+    75% {
+     transform: translate(0, 100vh);
+    }
+    100% {
+     transform: translate(0, 0);
+    }
+   }
   </style>
  </head>
  <body>
+  <div id="datetime"></div>
   <div class="quote-container">
    <div class="quote" id="quote"></div>
   </div>
@@ -129,6 +168,8 @@
    Kocham Cię najbardziej na świecie. Każda chwila z Tobą jest dla mnie
    wyjątkowa❤️
   </p>
+
+  <div class="heart" id="heart"></div>
 
   <script>
    const quotes = [
@@ -180,6 +221,22 @@
     document.getElementById("message").textContent = message;
    }
 
+   function updateDateTime() {
+    const now = new Date();
+    const options = {
+     year: "numeric",
+     month: "2-digit",
+     day: "2-digit",
+     hour: "2-digit",
+     minute: "2-digit",
+    };
+    const formattedDate = now.toLocaleDateString("pl-PL", options);
+    document.getElementById("datetime").textContent = formattedDate;
+   }
+
+   updateDateTime();
+   setInterval(updateDateTime, 60000);
+
    function toggleLetter() {
     const letter = document.getElementById("love-letter");
     const button = document.getElementById("love-btn");
@@ -199,6 +256,7 @@
 
    loadQuote();
    countDays();
+   animateHeart();
   </script>
  </body>
 </html>
