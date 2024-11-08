@@ -1,3 +1,4 @@
+/* styles.css */
 body,
 html {
  margin: 0;
@@ -38,24 +39,18 @@ html {
  text-align: center;
  font-size: 8vw;
  font-weight: bold;
- background: linear-gradient(
-  135deg,
-  rgba(255, 105, 180, 0.8),
-  rgba(255, 182, 193, 0.8)
- );
- background-size: 300% 300%; /* Ruchomy gradient */
+ background-image: url("tlo_cytatu.jpg");
+ background-size: cover;
  border-radius: 80px;
- padding: 30px 50px;
- box-shadow: 0 10px 40px rgba(255, 105, 180, 0.7),
-  0 0 20px rgba(255, 255, 255, 0.8);
- text-shadow: 4px 4px 12px rgba(255, 105, 180, 0.9),
-  0 0 25px rgba(255, 255, 255, 0.7);
+ padding: 30px 40px; /* Dodatkowe wcięcia */
+ box-shadow: 0 8px 30px rgba(255, 105, 180, 0.6); /* Zwiększony cień */
+ text-shadow: 3px 3px 10px rgba(255, 105, 180, 0.8),
+  0 0 20px rgba(255, 255, 255, 0.6);
  color: white;
- position: relative;
- animation: fadeIn 1s ease-in-out, pulse 2s infinite ease-in-out,
-  gradientShift 5s infinite ease-in-out;
+ animation: fadeIn 1s ease-in-out, pulse 2s infinite ease-in-out;
  opacity: 0;
  animation-fill-mode: forwards;
+ border: 3px solid rgba(255, 255, 255, 0.5); /* Delikatna ramka */
 }
 
 @keyframes fadeIn {
@@ -65,59 +60,6 @@ html {
  to {
   opacity: 1;
  }
-}
-
-@keyframes gradientShift {
- 0% {
-  background-position: 0% 50%;
- }
- 50% {
-  background-position: 100% 50%;
- }
- 100% {
-  background-position: 0% 50%;
- }
-}
-
-.quote::after {
- content: "";
- position: absolute;
- top: 0;
- left: -100%;
- width: 100%;
- height: 100%;
- background: linear-gradient(
-  120deg,
-  transparent,
-  rgba(255, 255, 255, 0.7),
-  transparent
- );
- animation: shine 3s infinite ease-in-out;
-}
-
-@keyframes shine {
- 0% {
-  left: -100%;
- }
- 50% {
-  left: 100%;
- }
- 100% {
-  left: 200%;
- }
-}
-
-.quote::before {
- content: "";
- position: absolute;
- top: 50%;
- left: 50%;
- width: 120%;
- height: 120%;
- background: radial-gradient(circle, rgba(255, 105, 180, 0.3), transparent);
- border-radius: 50%;
- transform: translate(-50%, -50%);
- z-index: -1;
 }
 
 .counter {
