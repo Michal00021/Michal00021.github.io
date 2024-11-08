@@ -11,6 +11,9 @@ const quotes = [
  "Jesteś słoda.",
  "Uwielbiam Twój uśmiech",
  "Dziękuje, że jesteś obecna w moim życiu",
+ "Każda chwila z Tobą jest cenniejsza niż złoto.",
+ "Razem możemy wszystko.",
+ "Nie ma słów, które wyrażą, jak wiele dla mnie znaczysz.",
 ];
 
 function loadQuote() {

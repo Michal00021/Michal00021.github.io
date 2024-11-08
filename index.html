@@ -3,6 +3,11 @@
  <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+   name="description"
+   content="Piękna strona dedykowana mojej dziewczynie."
+  />
+  <meta name="keywords" content="miłość, cytaty, romantyczna strona" />
   <title>Dla mojej pięknej dziewczyny</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -54,7 +59,7 @@
     font-weight: bold;
     background-image: url("tlo_cytatu.jpg");
     background-size: cover;
-    border-radius: 10px;
+    border-radius: 80px;
     padding: 20px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
     text-shadow: 2px 2px 8px rgba(255, 105, 180, 0.7);
@@ -93,12 +98,25 @@
     box-shadow: 0 4px 15px rgba(255, 105, 180, 0.5);
     transition: all 0.3s ease;
     margin-top: 20px;
+    animation: pulse 2s infinite;
    }
 
    .love-btn:hover {
     background-color: #ff1493;
     box-shadow: 0 6px 20px rgba(255, 105, 180, 0.7);
     transform: scale(1.05);
+   }
+
+   @keyframes pulse {
+    0% {
+     transform: scale(1);
+    }
+    50% {
+     transform: scale(1.05);
+    }
+    100% {
+     transform: scale(1);
+    }
    }
 
    #love-letter {
@@ -119,37 +137,26 @@
     z-index: 1000;
    }
 
-   .message {
-    font-size: 1em;
-    color: rgba(255, 255, 255, 0.6);
-    text-shadow: 1px 1px 3px rgba(255, 105, 180, 0.5);
-   }
-
-   .heart {
+   .floating-heart {
     position: absolute;
-    width: 50px;
-    height: 50px;
+    width: 30px;
+    height: 30px;
     background-image: url("heart.png");
     background-size: contain;
     background-repeat: no-repeat;
-    z-index: -1;
+    animation: float 6s infinite ease-in-out;
+    opacity: 0.7;
    }
 
-   @keyframes flyHeart {
+   @keyframes float {
     0% {
-     transform: translate(0, 0);
-    }
-    25% {
-     transform: translate(100vw, 0);
+     transform: translateY(0);
     }
     50% {
-     transform: translate(100vw, 100vh);
-    }
-    75% {
-     transform: translate(0, 100vh);
+     transform: translateY(-50px);
     }
     100% {
-     transform: translate(0, 0);
+     transform: translateY(0);
     }
    }
   </style>
@@ -169,8 +176,6 @@
    wyjątkowa❤️
   </p>
 
-  <div class="heart" id="heart"></div>
-
   <script>
    const quotes = [
     "Z Tobą każdy dzień ma więcej sensu.",
@@ -179,6 +184,13 @@
     "Fajnie, że jesteś. Serio.",
     "Kiedy jesteś obok, wszystko jest lepsze.",
     "Jesteś najlepszą częścią mojego dnia.",
+    "Przy Tobie wszystko wydaje się łatwiejsze.",
+    "Cieszę się, że jesteś częścią mojego życia.",
+    "Jesteś powodem, dla którego się uśmiecham.",
+    "Moje serce bije szybciej, kiedy Cię widzę.",
+    "Uwielbiam z Tobą spędzać czas.",
+    "Jesteś moim ulubionym miejscem.",
+    "Każda chwila z Tobą jest wyjątkowa.",
    ];
 
    function loadQuote() {
@@ -197,6 +209,10 @@
     setTimeout(() => {
      document.getElementById("quote").style.opacity = 1;
     }, 50);
+   }
+
+   function rotateQuotes() {
+    setInterval(loadQuote, 10000);
    }
 
    function countDays() {
@@ -234,6 +250,17 @@
     document.getElementById("datetime").textContent = formattedDate;
    }
 
+   function createFloatingHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("floating-heart");
+    heart.style.left = `${Math.random() * 100}vw`;
+    heart.style.animationDuration = `${4 + Math.random() * 2}s`;
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 6000);
+   }
+
+   setInterval(createFloatingHeart, 2000);
+
    updateDateTime();
    setInterval(updateDateTime, 60000);
 
@@ -247,7 +274,7 @@
      document.body.style.overflow = "hidden";
     } else {
      letter.style.display = "none";
-     button.textContent = "Klikniesz mnie? ";
+     button.textContent = "Klikniesz?";
      document.body.style.overflow = "";
     }
    }
@@ -255,8 +282,8 @@
    document.getElementById("love-letter").style.display = "none";
 
    loadQuote();
+   rotateQuotes();
    countDays();
-   animateHeart();
   </script>
  </body>
 </html>
