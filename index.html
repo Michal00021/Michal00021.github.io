@@ -60,13 +60,15 @@
     background-image: url("tlo_cytatu.jpg");
     background-size: cover;
     border-radius: 80px;
-    padding: 20px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-    text-shadow: 2px 2px 8px rgba(255, 105, 180, 0.7);
+    padding: 30px 40px; /* Dodatkowe wcięcia */
+    box-shadow: 0 8px 30px rgba(255, 105, 180, 0.6); /* Zwiększony cień */
+    text-shadow: 3px 3px 10px rgba(255, 105, 180, 0.8),
+     0 0 20px rgba(255, 255, 255, 0.6);
     color: white;
-    animation: fadeIn 1s ease-in-out;
+    animation: fadeIn 1s ease-in-out, pulse 2s infinite ease-in-out;
     opacity: 0;
     animation-fill-mode: forwards;
+    border: 3px solid rgba(255, 255, 255, 0.5); /* Delikatna ramka */
    }
 
    @keyframes fadeIn {
@@ -108,14 +110,12 @@
    }
 
    @keyframes pulse {
-    0% {
+    0%,
+    100% {
      transform: scale(1);
     }
     50% {
      transform: scale(1.05);
-    }
-    100% {
-     transform: scale(1);
     }
    }
 
@@ -189,8 +189,6 @@
     "Jesteś powodem, dla którego się uśmiecham.",
     "Moje serce bije szybciej, kiedy Cię widzę.",
     "Uwielbiam z Tobą spędzać czas.",
-    "Jesteś moim ulubionym miejscem.",
-    "Każda chwila z Tobą jest wyjątkowa.",
    ];
 
    function loadQuote() {
