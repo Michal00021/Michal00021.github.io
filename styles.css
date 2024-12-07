@@ -26,16 +26,6 @@ html {
  position: relative;
 }
 
-#datetime {
- position: absolute;
- top: 10px;
- right: 10px;
- font-size: 1.2em;
- color: white;
- text-shadow: 1px 1px 5px rgba(255, 105, 180, 0.5);
- z-index: 10;
-}
-
 .quote {
  text-align: center;
  font-size: 6vw;
@@ -53,6 +43,15 @@ html {
  opacity: 0;
  animation-fill-mode: forwards;
  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+#datetime {
+ position: absolute;
+ top: 10px;
+ right: 10px;
+ font-size: 1.2em;
+ color: white;
+ text-shadow: 1px 1px 5px rgba(255, 105, 180, 0.5);
+ z-index: 10;
 }
 
 @keyframes fadeIn {
@@ -141,5 +140,23 @@ html {
  }
  100% {
   transform: translateY(0);
+ }
+}
+
+.snowflake {
+ position: fixed;
+ top: -10%;
+ left: 50%;
+ font-size: 1.5em;
+ color: white;
+ opacity: 0.8;
+ animation: fall 8s linear infinite, sway 4s ease-in-out infinite;
+ pointer-events: none;
+ z-index: 10000;
+}
+
+@keyframes fall {
+ to {
+  transform: translateY(110vh);
  }
 }
