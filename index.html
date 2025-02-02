@@ -22,42 +22,24 @@
   <div class="quote-container">
    <div class="quote" id="quote"></div>
   </div>
-  <div class="counter" id="counter"></div>
-  <div class="message" id="message"></div>
-  <button id="love-btn" onclick="toggleLetter()" class="love-btn">
-   Klikniesz?
-  </button>
-  <p id="love-letter">
-   Kocham Cię najbardziej na świecie. Każda chwila z Tobą jest dla mnie
-   wyjątkowa❤️
-  </p>
+  <div class="info-container">
+   <div class="counter" id="counter"></div>
+   <div class="message" id="message"></div>
+   <button id="love-btn" onclick="toggleLetter()" class="love-btn">
+    Pacnij guzik
+   </button>
+  </div>
+  <p id="love-letter">Chcę z Tobą zamieszkać. Kocham Cię nad życie❤️</p>
 
   <script>
    const quotes = [
-    "Z Tobą każdy dzień ma więcej sensu.",
-    "Jesteś moją ulubioną osobą na świecie.",
-    "Zawsze potrafisz mnie rozśmieszyć.",
-    "Fajnie, że jesteś. Serio.",
-    "Kiedy jesteś obok, wszystko jest lepsze.",
-    "Jesteś najlepszą częścią mojego dnia.",
-    "Przy Tobie wszystko wydaje się łatwiejsze.",
-    "Cieszę się, że jesteś częścią mojego życia.",
-    "Jesteś powodem, dla którego się uśmiecham.",
-    "Moje serce bije szybciej, kiedy Cię widzę.",
-    "Uwielbiam z Tobą spędzać czas.",
-    "Twoja obecność to najpiękniejszy prezent.",
-    "Kiedy się śmiejesz, mój świat robi się jaśniejszy.",
-    "Nigdy nie przestaję być wdzięczny za Ciebie.",
-    "Nie wiedziałem, że można kogoś tak bardzo lubić.",
-    "Każde wspomnienie z Tobą jest jak skarb.",
-    "Dzięki Tobie czuję się wyjątkowy.",
-    "Chcę, żebyś zawsze była szczęśliwa.",
-    "Moje życie bez Ciebie byłoby puste.",
-    "Wszystko, co robię, robię z myślą o Tobie.",
-    "Twoje spojrzenie to moje ulubione miejsce na ziemi.",
-    "Ty jesteś odpowiedzią na wszystkie moje pytania.",
-    "Każda chwila z Tobą to coś więcej niż marzenie.",
-    "Uwielbiam patrzeć, jak się uśmiechasz.",
+    "Kocham Ciebie Zuzia",
+    "Naprawdę doceniam jak bardzo się o mnie troszczysz",
+    "Chcę zawsze być z Tobą",
+    "Jesteś dla mnie całym światem",
+    "Chcę z Tobą zamieszkać",
+    "Tęsknie za Tobą całymi dniami",
+    "Chcę żebyś zawze czuła się bezpiecznie i doceniana",
    ];
 
    function loadQuote() {
@@ -94,10 +76,10 @@
      "counter"
     ).textContent = `Jesteśmy już razem od ${daysDiff} dni!`;
 
-    let message = "To piękne!";
+    let message = "Cieszę się, że ";
 
     if (monthsDiff > 0) {
-     message += ` To już ${monthsDiff} ${
+     message += ` to już ${monthsDiff} ${
       monthsDiff === 1 ? "miesiąc" : "miesiące"
      } razem! 🎉`;
     }
@@ -120,16 +102,21 @@
    function createFloatingHeart() {
     const heart = document.createElement("div");
     heart.classList.add("floating-heart");
+
+    // Losowanie pozycji X i Y na całym ekranie
     heart.style.left = `${Math.random() * 100}vw`;
+    heart.style.top = `${Math.random() * 100}vh`;
+
+    // Losowanie rozmiaru i czasu trwania animacji
     heart.style.fontSize = `${30 + Math.random() * 10}px`;
     heart.style.animationDuration = `${4 + Math.random() * 1.5}s`;
+
     document.body.appendChild(heart);
+
     setTimeout(() => heart.remove(), 5000);
    }
 
    setInterval(createFloatingHeart, 1000);
-
-   setInterval(createFloatingHeart, 2000);
 
    updateDateTime();
    setInterval(updateDateTime, 60000);
@@ -144,25 +131,12 @@
      document.body.style.overflow = "hidden";
     } else {
      letter.style.display = "none";
-     button.textContent = "Klikniesz?";
+     button.textContent = "Pacnij guzik";
      document.body.style.overflow = "";
     }
    }
 
    document.getElementById("love-letter").style.display = "none";
-   function createSnowflake() {
-    const snowflake = document.createElement("div");
-    snowflake.classList.add("snowflake");
-    snowflake.textContent = "❄";
-    snowflake.style.left = `${Math.random() * 100}vw`;
-    snowflake.style.fontSize = `${Math.random() * 1.5 + 1}em`;
-    snowflake.style.animationDuration = `${Math.random() * 3 + 5}s`;
-    document.body.appendChild(snowflake);
-
-    setTimeout(() => snowflake.remove(), 8000);
-   }
-
-   setInterval(createSnowflake, 300);
 
    loadQuote();
    rotateQuotes();

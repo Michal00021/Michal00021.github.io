@@ -12,38 +12,92 @@ html {
  background-image: url("tlo.jpg");
  background-repeat: no-repeat;
  background-size: cover;
+ background-position: center;
  overflow: hidden;
+}
+
+.main-container {
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ height: 100vh;
+ width: 100%;
 }
 
 .quote-container {
  display: flex;
+ flex-direction: column;
  justify-content: center;
  align-items: center;
+ text-align: center;
  width: 100%;
- height: 100%;
- padding: 0 5%;
- box-sizing: border-box;
- position: relative;
+ max-width: 80%;
+ z-index: 10;
 }
 
 .quote {
+ max-width: 80%;
+ min-width: 300px;
  text-align: center;
  font-size: 6vw;
  font-weight: bold;
- background-image: url("tlo_cytatu.jpg");
- background-size: cover;
  border-radius: 20px;
  padding: 40px 50px;
- box-shadow: 0 10px 40px rgba(255, 105, 180, 0.4),
-  0 0 30px rgba(255, 255, 255, 0.3);
- text-shadow: 2px 2px 10px rgba(255, 105, 180, 0.6),
-  0 0 15px rgba(255, 255, 255, 0.5);
+ box-shadow: 0 10px 40px rgba(161, 0, 254, 0.655),
+  0 0 30px rgba(221, 0, 255, 0.3);
+ text-shadow: 2px 2px 10px rgba(255, 6, 222, 0.756),
+  0 0 15px rgba(195, 0, 255, 0.813);
  color: white;
  animation: fadeIn 1s ease-in-out, pulse 2s infinite ease-in-out;
  opacity: 0;
  animation-fill-mode: forwards;
  border: 2px solid rgba(255, 255, 255, 0.3);
+ backdrop-filter: blur(10px) brightness(60%);
+ background-color: rgba(0, 0, 0, 0.4);
+ word-wrap: break-word;
+ overflow: hidden;
 }
+
+.info-container {
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ margin-top: 40px;
+ gap: 10px;
+ padding: 20px;
+ border-radius: 15px;
+ background: rgba(255, 255, 255, 0.1);
+ box-shadow: 0 4px 20px rgba(255, 105, 180, 0.5),
+  0 4px 20px rgba(255, 0, 255, 0.5);
+ animation: floatUp 3s ease-in-out infinite, heartBeat 2s ease-in-out infinite;
+ border: 2px solid rgba(255, 255, 255, 0.5);
+ backdrop-filter: blur(5px);
+ z-index: 5;
+}
+
+@keyframes floatUp {
+ 0% {
+  transform: translateY(0);
+ }
+ 50% {
+  transform: translateY(-10px);
+ }
+ 100% {
+  transform: translateY(0);
+ }
+}
+
+@keyframes heartBeat {
+ 0%,
+ 100% {
+  transform: scale(1);
+ }
+ 50% {
+  transform: scale(1.05);
+ }
+}
+
 #datetime {
  position: absolute;
  top: 10px;
@@ -54,26 +108,15 @@ html {
  z-index: 10;
 }
 
-@keyframes fadeIn {
- from {
-  opacity: 0;
- }
- to {
-  opacity: 1;
- }
-}
-
-.counter {
- position: relative;
+.counter,
+.message {
  font-size: 1.5em;
  text-align: center;
- color: rgba(255, 255, 255, 0.8);
- margin-top: 20px;
- text-shadow: 1px 1px 5px rgba(255, 105, 180, 0.5);
+ color: rgba(255, 255, 255, 0.9);
+ text-shadow: 1px 1px 5px rgba(255, 105, 180, 0.7);
 }
-
 .love-btn {
- background-color: #ff69b4;
+ background-color: #ff0080f9;
  color: white;
  padding: 10px 20px;
  border: none;
@@ -82,7 +125,6 @@ html {
  cursor: pointer;
  box-shadow: 0 4px 15px rgba(255, 105, 180, 0.5);
  transition: all 0.3s ease;
- margin-top: 20px;
  animation: pulse 2s infinite;
 }
 
@@ -92,14 +134,9 @@ html {
  transform: scale(1.05);
 }
 
-@keyframes pulse {
- 0%,
- 100% {
-  transform: scale(1);
- }
- 50% {
-  transform: scale(1.05);
- }
+.love-btn:active {
+ transform: scale(0.95);
+ background-color: #d41b77;
 }
 
 #love-letter {
@@ -122,12 +159,12 @@ html {
 
 .floating-heart {
  position: absolute;
- width: 30px;
- height: 30px;
+ width: 50px;
+ height: 50px;
  background-image: url("heart.png");
  background-size: contain;
  background-repeat: no-repeat;
- animation: float 6s infinite ease-in-out;
+ animation: float 6s infinite ease-in-out, rotate 6s linear infinite;
  opacity: 0.7;
 }
 
@@ -142,21 +179,30 @@ html {
   transform: translateY(0);
  }
 }
-
-.snowflake {
- position: fixed;
- top: -10%;
- left: 50%;
- font-size: 1.5em;
- color: white;
- opacity: 0.8;
- animation: fall 8s linear infinite, sway 4s ease-in-out infinite;
- pointer-events: none;
- z-index: 10000;
+@keyframes rotate {
+ 0% {
+  transform: rotate(0deg);
+ }
+ 100% {
+  transform: rotate(360deg);
+ }
 }
 
-@keyframes fall {
+@keyframes pulse {
+ 0%,
+ 100% {
+  transform: scale(1);
+ }
+ 50% {
+  transform: scale(1.1);
+ }
+}
+
+@keyframes fadeIn {
+ from {
+  opacity: 0;
+ }
  to {
-  transform: translateY(110vh);
+  opacity: 1;
  }
 }
