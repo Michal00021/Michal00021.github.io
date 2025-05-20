@@ -22,12 +22,23 @@
   <div class="quote-container">
    <div class="quote" id="quote"></div>
   </div>
+
+  <script>
+   function createRosePetal() {
+    const petal = document.createElement("div");
+    petal.classList.add("rose-petal");
+    petal.textContent = "❀";
+    petal.style.left = Math.random() * 100 + "vw";
+    petal.style.fontSize = `${20 + Math.random() * 10}px`;
+    document.body.appendChild(petal);
+    setTimeout(() => petal.remove(), 10000);
+   }
+   setInterval(createRosePetal, 700);
+  </script>
+
   <div class="info-container">
    <div class="counter" id="counter"></div>
    <div class="message" id="message"></div>
-   <button id="love-btn" onclick="toggleLetter()" class="love-btn">
-    Pacnij guzik
-   </button>
   </div>
   <p id="love-letter">Chcę z Tobą zamieszkać. Kocham Cię nad życie❤️</p>
 
@@ -43,6 +54,26 @@
     "Bez Ciebie każda sekunda jest zbyt długa, a z Tobą czas mija za szybko.",
     "Moja miłość do Ciebie nie zna końca, rośnie z każdym dniem.",
     "Patrząc w Twoje oczy, widzę cały mój świat.",
+    "Z Tobą nawet zwykłe chwile stają się wyjątkowe.",
+    "Nie potrzebuję idealnego życia, wystarczy mi życie z Tobą.",
+    "Twój śmiech to moja ulubiona melodia.",
+    "Najlepsze, co mnie spotkało, to Ty.",
+    "Uwielbiam, jak potrafisz poprawić mi humor jednym spojrzeniem.",
+    "Nie muszę szukać szczęścia – znalazłem je w Tobie.",
+    "Przy Tobie czuję się sobą – i to jest najpiękniejsze.",
+    "Każde 'kocham Cię' znaczy więcej, niż tysiąc słów.",
+    "Z Tobą wszystko ma sens.",
+    "Trzymanie Twojej dłoni to mój ulubiony sposób na spokój.",
+    "Jesteś moim dziś, jutrem i zawsze.",
+    "Twój dotyk to mój dom.",
+    "Jesteś powodem, dla którego wierzę w miłość.",
+    "Nie muszę patrzeć w niebo, by zobaczyć gwiazdy – wystarczy mi Twój uśmiech.",
+    "Z Tobą każdy dzień jest wart zapamiętania.",
+    "Jesteś moim szczęściem w najczystszej postaci.",
+    "Wystarczy jedno Twoje spojrzenie, by mój dzień stał się lepszy.",
+    "Uwielbiam wszystko, co sprawia, że jesteś Tobą.",
+    "Ty + Ja = idealna równowaga.",
+    "Miłość nie musi być głośna – wystarczy, że jesteś obok.",
    ];
 
    function loadQuote() {
@@ -105,18 +136,16 @@
    function createFloatingHeart() {
     const heart = document.createElement("div");
     heart.classList.add("floating-heart");
+    heart.textContent = "❤️";
+    heart.style.left = `${Math.random() * 50}vw`;
+    heart.style.top = `${Math.random() * 50}vh`;
 
-    // Losowanie pozycji X i Y na całym ekranie
-    heart.style.left = `${Math.random() * 100}vw`;
-    heart.style.top = `${Math.random() * 100}vh`;
-
-    // Losowanie rozmiaru i czasu trwania animacji
-    heart.style.fontSize = `${30 + Math.random() * 10}px`;
-    heart.style.animationDuration = `${4 + Math.random() * 1.5}s`;
+    heart.style.fontSize = `${30 + Math.random() * 20}px`;
+    heart.style.animationDuration = `${4 + Math.random() * 3.5}s`;
 
     document.body.appendChild(heart);
 
-    setTimeout(() => heart.remove(), 5000);
+    setTimeout(() => heart.remove(), 10000);
    }
 
    setInterval(createFloatingHeart, 1000);
@@ -124,22 +153,22 @@
    updateDateTime();
    setInterval(updateDateTime, 60000);
 
-   function toggleLetter() {
-    const letter = document.getElementById("love-letter");
-    const button = document.getElementById("love-btn");
+   //    function toggleLetter() {
+   //     const letter = document.getElementById("love-letter");
+   //     const button = document.getElementById("love-btn");
 
-    if (letter.style.display === "none") {
-     letter.style.display = "block";
-     button.textContent = "Za dużo tego karmelu. Zamkniesz?";
-     document.body.style.overflow = "hidden";
-    } else {
-     letter.style.display = "none";
-     button.textContent = "Pacnij guzik";
-     document.body.style.overflow = "";
-    }
-   }
+   //     if (letter.style.display === "none") {
+   //      letter.style.display = "block";
+   //      button.textContent = "Za dużo tego karmelu. Zamkniesz?";
+   //      document.body.style.overflow = "hidden";
+   //     } else {
+   //      letter.style.display = "none";
+   //      button.textContent = "Pacnij guzik";
+   //      document.body.style.overflow = "";
+   //     }
+   //    }
 
-   document.getElementById("love-letter").style.display = "none";
+   //    document.getElementById("love-letter").style.display = "none";
 
    loadQuote();
    rotateQuotes();
