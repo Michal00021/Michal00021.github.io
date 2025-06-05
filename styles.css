@@ -154,6 +154,12 @@ html {
  color: pink;
  animation: float 6s ease-in-out infinite, rotate 4s linear infinite;
 }
+.countdown-message {
+ font-size: 1.2em;
+ text-align: center;
+ color: #ff69b4;
+ font-weight: bold;
+}
 
 .rose-petal {
  position: fixed;

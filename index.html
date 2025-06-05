@@ -39,6 +39,7 @@
   <div class="info-container">
    <div class="counter" id="counter"></div>
    <div class="message" id="message"></div>
+   <div id="move-in-countdown" class="countdown-message"></div>
   </div>
   <p id="love-letter">Chcę z Tobą zamieszkać. Kocham Cię nad życie❤️</p>
 
@@ -74,6 +75,9 @@
     "Uwielbiam wszystko, co sprawia, że jesteś Tobą.",
     "Ty + Ja = idealna równowaga.",
     "Miłość nie musi być głośna – wystarczy, że jesteś obok.",
+    "Kokam Ciebie!",
+    "Całuje!",
+    "Chcę żebyśmy już zawsze byli razem Miś!",
    ];
 
    function loadQuote() {
@@ -119,6 +123,28 @@
     }
     document.getElementById("message").textContent = message;
    }
+   function updateMoveInCountdown() {
+    const now = new Date();
+    const moveInDate = new Date("2025-06-07T15:00:00");
+
+    const timeDiff = moveInDate - now;
+
+    if (timeDiff <= 0) {
+     document.getElementById("move-in-countdown").textContent =
+      "Już razem mieszkamy! 🏠❤️";
+     return;
+    }
+
+    const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((timeDiff / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((timeDiff / (1000 * 60)) % 60);
+
+    document.getElementById(
+     "move-in-countdown"
+    ).textContent = `Do wspólnego zamieszkania zostało: ${days} dni, ${hours} godzin, ${minutes} minut 🏠💖`;
+   }
+   updateMoveInCountdown();
+   setInterval(updateMoveInCountdown, 60000);
 
    function updateDateTime() {
     const now = new Date();
