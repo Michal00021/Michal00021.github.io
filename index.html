@@ -7,198 +7,61 @@
    name="description"
    content="Piękna strona dedykowana mojej dziewczynie."
   />
-  <meta name="keywords" content="miłość, cytaty, romantyczna strona" />
   <title>Dla mojej pięknej dziewczyny</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
    href="https://fonts.googleapis.com/css2?family=Qwitcher+Grypen:wght@400;700&display=swap"
    rel="stylesheet"
   />
+
   <link rel="stylesheet" href="styles.css" />
  </head>
+
  <body>
+  <!-- DATA -->
   <div id="datetime"></div>
-  <div class="quote-container">
-   <div class="quote" id="quote"></div>
+
+  <!-- HERO -->
+  <main class="hero">
+   <div class="quote-container">
+    <div class="quote" id="quote">
+     <span class="quote-text">Dom to nie adres.<br />To Ty.</span>
+
+     <button id="open-letter" class="letter-btn inside-quote">
+      Otwórz list
+     </button>
+    </div>
+   </div>
+
+   <div class="info-container">
+    <div class="counter" id="counter"></div>
+    <div class="message" id="message"></div>
+    <div id="move-in-countdown" class="countdown-message"></div>
+   </div>
+  </main>
+
+  <!-- LIST -->
+  <div class="letter-overlay" id="letter-overlay">
+   <div class="letter">
+    <p id="letter-text"><span id="cursor">|</span></p>
+    <button id="close-letter" class="close-btn">Zamknij</button>
+   </div>
   </div>
 
-  <script>
-   function createRosePetal() {
-    const petal = document.createElement("div");
-    petal.classList.add("rose-petal");
-    petal.textContent = "❀";
-    petal.style.left = Math.random() * 100 + "vw";
-    petal.style.fontSize = `${20 + Math.random() * 10}px`;
-    document.body.appendChild(petal);
-    setTimeout(() => petal.remove(), 10000);
-   }
-   setInterval(createRosePetal, 700);
-  </script>
+  <!-- AUDIO -->
+  <audio id="paper-sound" preload="auto">
+   <source src="paper.mp3" type="audio/mpeg" />
+  </audio>
 
-  <div class="info-container">
-   <div class="counter" id="counter"></div>
-   <div class="message" id="message"></div>
-   <div id="move-in-countdown" class="countdown-message"></div>
-  </div>
-  <p id="love-letter">Chcę z Tobą zamieszkać. Kocham Cię nad życie❤️</p>
+  <audio id="bg-music" loop>
+   <source src="music.mp3" type="audio/mpeg" />
+  </audio>
 
-  <script>
-   const quotes = [
-    "Kocham Cię bardziej, niż jestem w stanie wyrazić słowami.",
-    "Jesteś moim ulubionym miejscem na świecie.",
-    "Gdy jesteś obok, świat staje się piękniejszy.",
-    "Każdy dzień z Tobą to najpiękniejsza historia, jaką pisze życie.",
-    "Twoje uśmiechy sprawiają, że moje serce tańczy.",
-    "Jesteś moją pierwszą myślą o poranku i ostatnią przed snem.",
-    "Chcę być powodem, dla którego się uśmiechasz każdego dnia.",
-    "Bez Ciebie każda sekunda jest zbyt długa, a z Tobą czas mija za szybko.",
-    "Moja miłość do Ciebie nie zna końca, rośnie z każdym dniem.",
-    "Patrząc w Twoje oczy, widzę cały mój świat.",
-    "Z Tobą nawet zwykłe chwile stają się wyjątkowe.",
-    "Nie potrzebuję idealnego życia, wystarczy mi życie z Tobą.",
-    "Twój śmiech to moja ulubiona melodia.",
-    "Najlepsze, co mnie spotkało, to Ty.",
-    "Uwielbiam, jak potrafisz poprawić mi humor jednym spojrzeniem.",
-    "Nie muszę szukać szczęścia – znalazłem je w Tobie.",
-    "Przy Tobie czuję się sobą – i to jest najpiękniejsze.",
-    "Każde 'kocham Cię' znaczy więcej, niż tysiąc słów.",
-    "Z Tobą wszystko ma sens.",
-    "Trzymanie Twojej dłoni to mój ulubiony sposób na spokój.",
-    "Jesteś moim dziś, jutrem i zawsze.",
-    "Twój dotyk to mój dom.",
-    "Jesteś powodem, dla którego wierzę w miłość.",
-    "Nie muszę patrzeć w niebo, by zobaczyć gwiazdy – wystarczy mi Twój uśmiech.",
-    "Z Tobą każdy dzień jest wart zapamiętania.",
-    "Jesteś moim szczęściem w najczystszej postaci.",
-    "Wystarczy jedno Twoje spojrzenie, by mój dzień stał się lepszy.",
-    "Uwielbiam wszystko, co sprawia, że jesteś Tobą.",
-    "Ty + Ja = idealna równowaga.",
-    "Miłość nie musi być głośna – wystarczy, że jesteś obok.",
-    "Kokam Ciebie!",
-    "Całuje!",
-    "Chcę żebyśmy już zawsze byli razem Miś!",
-   ];
+  <button id="music-toggle" class="music-btn">🎵</button>
 
-   function loadQuote() {
-    const today = new Date();
-    const startOfDay = new Date(
-     today.getFullYear(),
-     today.getMonth(),
-     today.getDate()
-    );
-    const baseDate = new Date("2024-01-01");
-    const dayDifference = Math.floor(
-     (startOfDay - baseDate) / (1000 * 60 * 60 * 24)
-    );
-    const randomQuoteIndex = dayDifference % quotes.length;
-    document.getElementById("quote").textContent = quotes[randomQuoteIndex];
-    setTimeout(() => {
-     document.getElementById("quote").style.opacity = 1;
-    }, 50);
-   }
-
-   function rotateQuotes() {
-    setInterval(loadQuote, 10000);
-   }
-
-   function countDays() {
-    const startDate = new Date("2024-08-27");
-    const today = new Date();
-    const timeDiff = today - startDate;
-    const daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
-
-    const monthsDiff = Math.floor(daysDiff / 30);
-
-    document.getElementById(
-     "counter"
-    ).textContent = `Jesteśmy już razem od ${daysDiff} dni!`;
-
-    let message = "Cieszę się, że ";
-
-    if (monthsDiff > 0) {
-     message += ` to już ${monthsDiff} ${
-      monthsDiff === 1 ? "miesiąc" : "miesiące"
-     } razem! 🎉`;
-    }
-    document.getElementById("message").textContent = message;
-   }
-   function updateMoveInCountdown() {
-    const now = new Date();
-    const moveInDate = new Date("2025-06-07T15:00:00");
-
-    const timeDiff = moveInDate - now;
-
-    if (timeDiff <= 0) {
-     document.getElementById("move-in-countdown").textContent =
-      "Już razem mieszkamy! 🏠❤️";
-     return;
-    }
-
-    const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((timeDiff / (1000 * 60 * 60)) % 24);
-    const minutes = Math.floor((timeDiff / (1000 * 60)) % 60);
-
-    document.getElementById(
-     "move-in-countdown"
-    ).textContent = `Do wspólnego zamieszkania zostało: ${days} dni, ${hours} godzin, ${minutes} minut 🏠💖`;
-   }
-   updateMoveInCountdown();
-   setInterval(updateMoveInCountdown, 60000);
-
-   function updateDateTime() {
-    const now = new Date();
-    const options = {
-     year: "numeric",
-     month: "2-digit",
-     day: "2-digit",
-     hour: "2-digit",
-     minute: "2-digit",
-    };
-    const formattedDate = now.toLocaleDateString("pl-PL", options);
-    document.getElementById("datetime").textContent = formattedDate;
-   }
-
-   function createFloatingHeart() {
-    const heart = document.createElement("div");
-    heart.classList.add("floating-heart");
-    heart.textContent = "❤️";
-    heart.style.left = `${Math.random() * 50}vw`;
-    heart.style.top = `${Math.random() * 50}vh`;
-
-    heart.style.fontSize = `${30 + Math.random() * 20}px`;
-    heart.style.animationDuration = `${4 + Math.random() * 3.5}s`;
-
-    document.body.appendChild(heart);
-
-    setTimeout(() => heart.remove(), 10000);
-   }
-
-   setInterval(createFloatingHeart, 1000);
-
-   updateDateTime();
-   setInterval(updateDateTime, 60000);
-
-   //    function toggleLetter() {
-   //     const letter = document.getElementById("love-letter");
-   //     const button = document.getElementById("love-btn");
-
-   //     if (letter.style.display === "none") {
-   //      letter.style.display = "block";
-   //      button.textContent = "Za dużo tego karmelu. Zamkniesz?";
-   //      document.body.style.overflow = "hidden";
-   //     } else {
-   //      letter.style.display = "none";
-   //      button.textContent = "Pacnij guzik";
-   //      document.body.style.overflow = "";
-   //     }
-   //    }
-
-   //    document.getElementById("love-letter").style.display = "none";
-
-   loadQuote();
-   rotateQuotes();
-   countDays();
-  </script>
+  <!-- JS -->
+  <script src="script.js"></script>
  </body>
 </html>
