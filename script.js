@@ -103,7 +103,7 @@ document.addEventListener("DOMContentLoaded", () => {
    const cursor = document.getElementById("cursor");
    letterText.insertBefore(
     document.createTextNode(letterContent[index]),
-    cursor
+    cursor,
    );
    index++;
 
@@ -117,9 +117,20 @@ document.addEventListener("DOMContentLoaded", () => {
  // ===== QUOTE DNIA =====
  const quotes = [
   "Dom to nie adres. To Ty.",
-  "Każdy dzień z Tobą to dobry dzień.",
-  "Nie liczę dni. Liczę chwile z Tobą.",
-  "Z Tobą wszystko ma sens.",
+  "Przy Tobie wszystko ma sens.",
+  "Jesteś moim ulubionym miejscem na świecie.",
+  "Najpiękniejsza część mojego dnia zaczyna się od Ciebie.",
+  "Nie potrzebuję nic więcej, kiedy mam Ciebie.",
+  "Z Tobą zwykłe chwile stają się wyjątkowe.",
+  "Mój świat jest lepszy, odkąd w nim jesteś.",
+  "Ty jesteś moim spokojem.",
+  "Najbardziej lubię wracać do Ciebie.",
+  "Wśród milionów ludzi wybrałbym Ciebie za każdym razem.",
+  "Kocham Cię bardziej niż potrafię ubrać w słowa.",
+  "Jesteś moim szczęśliwym przypadkiem.",
+  "W Twoich ramionach jest mój dom.",
+  "Z Tobą wszystko jest prostsze.",
+  "Najlepsze wspomnienia mają Ciebie w środku.",
  ];
 
  if (isNewYear) {
