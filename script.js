@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
  // ===== ELEMENTY =====
  const counterEl = document.getElementById("counter");
  const messageEl = document.getElementById("message");
+ const loveNoteEl = document.getElementById("love-note");
  const countdownEl = document.getElementById("move-in-countdown");
  const dateTimeEl = document.getElementById("datetime");
 
@@ -36,6 +37,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const today = new Date();
   const days = Math.floor((today - startDate) / 86400000);
   const months = Math.floor(days / 30);
+
+  loveNoteEl.textContent = "Od 19 lutego 2024 mój świat jest lepszy.";
 
   counterEl.textContent = `Jesteśmy już razem ${days} dni`;
   if (months > 0) {
