@@ -38,9 +38,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const days = Math.floor((today - startDate) / 86400000);
   const months = Math.floor(days / 30);
 
-  loveNoteEl.textContent = "Od 19 lutego 2024 mój świat jest lepszy.";
-
-  counterEl.textContent = `Jesteśmy już razem ${days} dni`;
+  loveNoteEl.innerHTML = `Od 19 lutego 2024 mój świat jest lepszy.<br>
+    I każdego dnia utwierdzam się w tym,
+    że to Ciebie chcę kiedyś nazwać swoją żoną. ❤️
+  `;
+  counterEl.innerHTML = `Jesteśmy już razem <span class="highlight-number">${days}</span> dni!`;
   if (months > 0) {
    messageEl.textContent = `To już ${months} ${
     months === 1 ? "miesiąc" : "miesiący"
@@ -54,7 +56,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const diff = moveInDate - new Date();
 
   if (diff <= 0) {
-   countdownEl.textContent = "Ba już mieszkamy razem! 🏠❤️";
+   countdownEl.textContent =
+    "Ba najlepsze jest to, że już mieszkamy razem! 🏠❤️";
    return;
   }
 
@@ -88,8 +91,13 @@ document.addEventListener("DOMContentLoaded", () => {
   (today.getMonth() === 0 && today.getDate() === 1);
 
  const normalText =
-  "Zuzia, serio zrobię dla Ciebie wszystko.\nKocham Cię nad życie ❤️";
-
+  "Zuzia,\n\n" +
+  "ostatnio poświęcam Ci mniej czasu, niż bym chciał. Nowa praca wymaga ode mnie dużo energii i czasem wracam zmęczony i zamyślony.\n\n" +
+  "Chcę jednak, żebyś wiedziała, że bardzo Cię kocham, ufam Ci i naprawdę za Tobą tęsknię.\n\n" +
+  "Nie zawsze potrafię to pokazać i nie zawsze jestem idealny, ale to nie zmienia tego, że widzę Cię w swojej przyszłości.\n\n" +
+  "Chcę najpierw dobrze odnaleźć się zawodowo żeby móc  zbudować dla nas stabilne życie.\n\n" +
+  "A potem spełnić nasze marzenia - mieć własne mieszkanie, zwierzątko i poprosić Cię, żebyś została moją żoną.\n\n" +
+  "Kocham Cię nad życie❤️";
  const newYearText =
   "Nowy rok.\nNowe dni.\nAle jedno się nie zmienia.\n\nTo, że wybieram Ciebie.\nKażdego dnia.\n\n❤️";
 

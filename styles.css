@@ -96,7 +96,20 @@ body {
 .message {
  font-size: 1.5em;
 }
-
+.highlight-number {
+ font-weight: 700;
+ font-size: 1.5em;
+ color: #ffd6e7;
+}
+.love-note {
+ margin-top: 5px;
+ margin-bottom: 5px;
+ font-size: 1rem;
+ line-height: 1.7;
+ color: #f7c6d9;
+ font-style: italic;
+ text-shadow: 0 0 10px rgba(247, 198, 217, 0.2);
+}
 .countdown-message {
  font-size: 1.2em;
  color: #ff69b4;
@@ -126,26 +139,28 @@ body {
 .letter {
  background: #f7f2ee;
  color: #111;
- padding: 60px 50px 40px;
+ padding: 40px 35px 30px;
  border-radius: 12px;
 
  display: flex;
  flex-direction: column;
  justify-content: space-between;
  align-items: center;
- gap: 40px;
+ gap: 25px;
 
- font-family: "Qwitcher Grypen", cursive;
- font-size: 42px;
+ font-family: "Caveat", cursive;
+ font-size: clamp(24px, 3vw, 36px);
+ line-height: 1.5;
  text-align: center;
 
  max-width: 700px;
  width: 90%;
+ max-height: 85vh;
+ overflow-y: auto;
 
  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.4);
  animation: letterIn 0.6s ease;
 }
-
 .letter.closing {
  animation: closeEnvelope 0.6s ease forwards;
 }
