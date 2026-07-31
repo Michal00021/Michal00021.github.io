@@ -1,72 +1,218 @@
 <!doctype html>
 <html lang="pl">
- <head>
-  <link
-   href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap"
-   rel="stylesheet"
-  />
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta
-   name="description"
-   content="Piękna strona dedykowana mojej dziewczynie."
+    name="description"
+    content="Nasza historia miłości - strona dedykowana mojej ukochanej dziewczynie."
   />
-  <title>Dla mojej pięknej dziewczyny</title>
+  <title>Dla mojej pięknej dziewczyny 💕</title>
 
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-   href="https://fonts.googleapis.com/css2?family=Qwitcher+Grypen:wght@400;700&display=swap"
-   rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Qwitcher+Grypen:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap"
+    rel="stylesheet"
   />
 
   <link rel="stylesheet" href="styles.css" />
- </head>
+</head>
 
- <body>
-  <!-- DATA -->
-  <div id="datetime"></div>
+<body>
+  <!-- PARTICLES BACKGROUND -->
+  <div class="particles-container"></div>
+
+  <!-- GRADIENT BACKGROUND -->
+  <div class="gradient-bg"></div>
+
+  <!-- STARS -->
   <div class="stars"></div>
-  <!-- HERO -->
-  <main class="hero">
-   <div class="quote-container">
-    <div class="quote" id="quote">
-     <span class="quote-text">Dom to nie adres.<br />To Ty.</span>
 
-     <button id="open-letter" class="letter-btn inside-quote">
-      Otwórz list
-     </button>
+  <!-- DATETIME -->
+  <div id="datetime" class="datetime"></div>
+
+  <!-- NAVIGATION -->
+  <nav class="nav-bar">
+    <div class="nav-container">
+      <button class="nav-btn active" data-section="home">🏠 Dom</button>
+      <button class="nav-btn" data-section="gallery">🖼️ Galeria</button>
+      <button class="nav-btn" data-section="story">📖 Historia</button>
     </div>
-   </div>
+  </nav>
 
-   <div class="info-container">
-    <div class="counter" id="counter"></div>
-    <div class="message" id="message"></div>
-    <div class="love-note" id="love-note"></div>
-    <div id="move-in-countdown" class="countdown-message"></div>
-   </div>
+  <!-- MAIN CONTENT -->
+  <main class="content-wrapper">
+    
+    <!-- ===== HOME SECTION ===== -->
+    <section class="section active" id="home">
+      <div class="hero">
+        <div class="hero-content">
+          <div class="quote-container">
+            <div class="quote" id="quote">
+              <div class="quote-glow"></div>
+              <span class="quote-text">Dom to nie adres.<br />To Ty.</span>
+
+              <button id="open-letter" class="letter-btn inside-quote">
+                Otwórz list 💌
+              </button>
+            </div>
+          </div>
+
+          <!-- INFO SECTION -->
+          <div class="info-container">
+            <div class="counter" id="counter"></div>
+            <div class="message" id="message"></div>
+            <div class="love-note" id="love-note"></div>
+            <div id="move-in-countdown" class="countdown-message"></div>
+
+            <!-- PROPOSAL SECTION -->
+            <div id="proposal-section" class="proposal-section hidden">
+              <div class="proposal-header">✨ COŚ SPECJALNEGO ✨</div>
+              <div id="proposal-countdown" class="proposal-countdown"></div>
+              <button id="skip-to-proposal" class="proposal-btn">
+                Chcę wiedzieć co się stanie! 💝
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== GALLERY SECTION ===== -->
+    <section class="section" id="gallery">
+      <div class="gallery-container">
+        <h2 class="section-title">🖼️ Nasza Galeria</h2>
+        <p class="gallery-subtitle">Kliknij na zdjęcie aby powiększyć ✨</p>
+        
+        <div class="gallery-grid" id="gallery-grid">
+          <!-- Zdjęcia będą ładowane tutaj automatycznie -->
+        </div>
+
+        <div class="gallery-info">
+          <p>📁 Aby dodać zdjęcia:</p>
+          <ol>
+            <li>Utwórz folder <strong>photos</strong> w tym samym folderze co index.html</li>
+            <li>Wrzuć tam zdjęcia (JPG, PNG, WEBP)</li>
+            <li>Odśwież stronę - zdjęcia pojawią się tutaj! 🎉</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== STORY SECTION ===== -->
+    <section class="section" id="story">
+      <div class="story-container">
+        <h2 class="section-title">📖 Nasza Historia</h2>
+        
+        <div class="timeline">
+          <!-- Timeline będzie generowany przez JS -->
+          <div id="timeline-container"></div>
+        </div>
+      </div>
+    </section>
+
   </main>
 
-  <!-- LIST -->
+  <!-- LETTER MODAL -->
   <div class="letter-overlay" id="letter-overlay">
-   <div class="letter" id="letter">
-    <p id="letter-text"><span id="cursor">|</span></p>
-    <button id="close-letter" class="close-btn">Zamknij</button>
-   </div>
+    <div class="letter" id="letter">
+      <div class="letter-header">
+        <button id="close-letter" class="close-btn">✕</button>
+      </div>
+      <div class="letter-content">
+        <p id="letter-text"><span id="cursor">|</span></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- GALLERY MODAL -->
+  <div class="gallery-modal-overlay" id="gallery-modal">
+    <button class="modal-close" id="modal-close">✕</button>
+    <div class="gallery-modal-content">
+      <button class="modal-nav prev" id="modal-prev">❮</button>
+      <img id="modal-image" src="" alt="Powiększone zdjęcie" />
+      <button class="modal-nav next" id="modal-next">❯</button>
+      <div class="modal-counter" id="modal-counter">1 / 5</div>
+    </div>
+  </div>
+
+  <!-- PROPOSAL MODAL -->
+  <div class="proposal-overlay" id="proposal-overlay">
+    <div class="proposal-modal" id="proposal-modal">
+      <button id="close-proposal" class="close-btn-proposal">✕</button>
+      <div class="proposal-content">
+        <div class="hearts-animation"></div>
+        <h1 class="proposal-title">Zuzia...</h1>
+        <p class="proposal-text">
+          Przeszliśmy razem mnóstwo chwil. Od tamtego wieczoru 4 czerwca, kiedy się poznaliśmy,
+          wiem, że jesteś tą osobą, z którą chcę spędzić resztę życia.
+        </p>
+        <p class="proposal-text">
+          Te ostatnie miesiące każdego dnia mi potwierdzają, że z Tobą chcę budować
+          przyszłość. Chcę Ciebie poznawać na nowo każdego dnia.
+        </p>
+
+        <div class="proposal-question">
+          <h2>Czy chcesz mnie poślubić? 💍</h2>
+        </div>
+
+        <!-- OPCJA 1: PRZYCISKOWY INTERFEJS -->
+        <div class="proposal-buttons-section">
+          <p class="proposal-option-label">Kliknij odpowiedź:</p>
+          <div class="proposal-buttons">
+            <button id="btn-yes" class="btn-choice btn-yes">TAK! ❤️</button>
+            <button id="btn-no" class="btn-choice btn-no">Nie 😔</button>
+          </div>
+        </div>
+
+        <!-- SEPARATOR -->
+        <div class="proposal-separator">
+          <span>LUB</span>
+        </div>
+
+        <!-- OPCJA 2: WPISANIE ODPOWIEDZI -->
+        <div class="proposal-input-section">
+          <p class="proposal-option-label">Wpisz "tak" lub "nie":</p>
+          <div class="proposal-text-input-group">
+            <input 
+              type="text" 
+              id="proposal-text-input" 
+              class="proposal-text-input" 
+              placeholder="tak / nie"
+              maxlength="10"
+            />
+            <button id="proposal-check-btn" class="proposal-check-btn">
+              ✓
+            </button>
+          </div>
+        </div>
+
+        <div id="yes-message" class="yes-message hidden">
+          <p>KOCHAM CIĘ! 🎉💕🎊</p>
+          <p class="yes-subtext">Będę najszczęśliwszym człowiekiem na świecie!</p>
+          <div class="confetti-trigger"></div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- AUDIO -->
   <audio id="paper-sound" preload="auto">
-   <source src="paper.mp3" type="audio/mpeg" />
+    <source src="paper.mp3" type="audio/mpeg" />
   </audio>
 
   <audio id="bg-music" loop>
-   <source src="music.mp3" type="audio/mpeg" />
+    <source src="music.mp3" type="audio/mpeg" />
   </audio>
 
-  <button id="music-toggle" class="music-btn">🎵</button>
+  <!-- CONTROLS -->
+  <div class="controls">
+    <button id="music-toggle" class="music-btn" title="Przełącz muzykę">🎵</button>
+  </div>
 
   <!-- JS -->
   <script src="script.js"></script>
- </body>
+</body>
 </html>
